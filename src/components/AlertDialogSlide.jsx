@@ -2,10 +2,11 @@ import React from "react";
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide } from "@mui/material";
 import { GreenButton, RedButton } from "../utils/buttonStyles";
 
-const AlertDialogSlide = ({ dialog, showDialog, setShowDialog }) => {
+const AlertDialogSlide = ({ dialog, showDialog, setShowDialog, taskHandler }) => {
     const handleClose = () => {
         setShowDialog(false);
     };
+    
     return (
         <Dialog
             open={showDialog}
@@ -17,20 +18,15 @@ const AlertDialogSlide = ({ dialog, showDialog, setShowDialog }) => {
             <DialogTitle>{dialog}</DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-slide-description">
-                    You won't be able to recover it back.
-                    Decide Now
+                    You won't be able to recover it back. Decide Now
                 </DialogContentText>
             </DialogContent>
             <DialogActions style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div>
-                    <GreenButton onClick={handleClose}>No</GreenButton>
-                </div>
-                <div>
-                    <RedButton onClick={() => {
-                        handleClose()
-                        taskHandler()
-                    }}>Yes</RedButton>
-                </div>
+                <GreenButton onClick={handleClose}>No</GreenButton>
+                <RedButton onClick={() => {
+                    handleClose();
+                    taskHandler();
+                }}>Yes</RedButton>
             </DialogActions>
         </Dialog>
     );

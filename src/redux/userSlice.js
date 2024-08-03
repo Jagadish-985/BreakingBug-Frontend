@@ -311,6 +311,8 @@ export const {
     removeAllFromCart,
     fetchProductDetailsFromCart,
     updateCurrentUser,
+    getCustomersListFailed,
+    setFilteredProducts,
     
 } = userSlice.actions;
 

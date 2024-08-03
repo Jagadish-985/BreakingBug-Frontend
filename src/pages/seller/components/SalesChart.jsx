@@ -1,3 +1,4 @@
+import React from 'react';
 import {
     Button,
     Card,
@@ -15,9 +16,11 @@ import { ChartDatabyYear } from '../../../utils/chartData';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const SalesChart = ({  }) => {
-
+const SalesChart = () => {
     const navigate = useNavigate();
+
+    // Define the chart type
+    const chartType = 'line'; // Example chart type
 
     return (
         <Card sx={{ backgroundImage: "linear-gradient(320deg, rgb(58 163 171 / 32%) 0%, rgb(8 23 198 / 32%) 100%)" }}>
@@ -40,7 +43,7 @@ const SalesChart = ({  }) => {
                 <ResponsiveChart
                     options={ChartDatabyYear.options}
                     series={ChartDatabyYear.series}
-                    type={type}
+                    type={chartType} // Use the defined chart type
                 />
             </CardContent>
 

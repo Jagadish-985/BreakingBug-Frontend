@@ -5,20 +5,22 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const AccountMenu = () => {
-    const [anchorEl, setAnchorEl] = useEffect(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const open = Boolean(anchorEl);
 
     const { currentUser } = useSelector(state => state.user);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+    
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -52,7 +54,7 @@ const AccountMenu = () => {
             >
                 <MenuItem onClick={() => navigate("/Profile")}>
                     <Avatar />
-                    <Link to="/Profile">
+                    <Link to="/Profile" style={{ textDecoration: 'none', color: 'inherit' }}>
                         Profile
                     </Link>
                 </MenuItem>
@@ -61,16 +63,16 @@ const AccountMenu = () => {
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
-                    <Link to="/Logout">
+                    <Link to="/Logout" style={{ textDecoration: 'none', color: 'inherit' }}>
                         Logout
                     </Link>
                 </MenuItem>
             </Menu>
         </>
     );
-}
+};
 
-export default AccountMenu
+export default AccountMenu;
 
 const styles = {
     styledPaper: {
@@ -96,4 +98,4 @@ const styles = {
             zIndex: 0,
         },
     }
-}
+};
